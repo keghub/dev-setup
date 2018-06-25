@@ -20,61 +20,61 @@ cinst -y IIS-ManagementScriptingTools -source windowsfeatures
 cinst -y IIS-WindowsAuthentication -source windowsfeatures
 
 #--- .NET ---
-cinst PowerShell -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnet4.5 -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnet4.6.2 -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnet4.7 -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst netfx-4.7.1-devpack -y -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst PowerShell -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnet4.5 -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnet4.6.2 -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnet4.7 -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst netfx-4.7.1-devpack -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
-cinst dotnetcore-sdk -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnetcore -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnetcore-windowshosting -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 1.0.10 -my -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 1.1.7 -my -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 2.0.7 -my -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 2.1.0 -my -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore-sdk -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore-windowshosting -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore-runtime.install --version 1.0.10 -my --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore-runtime.install --version 1.1.7 -my --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore-runtime.install --version 2.0.7 -my --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst dotnetcore-runtime.install --version 2.1.0 -my --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
 #--- Applications ---
-cinst googlechrome -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst javaruntime -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst notepadplusplus.install -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst notepad3.install -y -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst googlechrome -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst javaruntime -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst notepadplusplus.install -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst notepad3.install -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
 #--- Visual Studio ---
-cinst visualstudio2015professional -y -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudio2015professional -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
-cinst visualstudio2017professional -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-manageddesktop -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-netcoretools -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-netweb -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-node -y -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudio2017professional -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-manageddesktop -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-netcoretools -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-netweb -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-node -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
 #--- Other dev ---
-cinst git -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst resharper-ultimate-all -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst sql-server-management-studio -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst poshgit -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst sourcetree -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst linqpad -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst github -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst docker-for-windows -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst docker-kitematic -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst redis-desktop-manager -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst rdcman -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst ProcExp -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst cloudberryexplorer.s3 -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst postman -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst sysinternals -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst python -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst awstools.powershell -y -c "%UserProfile%\AppData\Local\ChocoCache"
-cinst pip -y -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst git -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst resharper-ultimate-all -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst sql-server-management-studio -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst poshgit -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst sourcetree -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst linqpad -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst github -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst docker-for-windows -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst docker-kitematic -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst redis-desktop-manager -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst rdcman -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst ProcExp -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst cloudberryexplorer.s3 -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst postman -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst sysinternals -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst python -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst awstools.powershell -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
+cinst pip -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
 #--- Visual Studio Code ---
-cinst visualstudiocode -y -c "%UserProfile%\AppData\Local\ChocoCache"
+cinst visualstudiocode -y --cacheInstaller "%UserProfile%\AppData\Local\ChocoCache"
 
 code --install-extension ms-vscode.csharp
 code --install-extension ms-vscode.powershell
-code --install-extension formulahendry.auto-close-tag
+code --install-extension formulahendry.auto--cacheInstallerlose-tag
 code --install-extension jchannon.csharpextensions
 code --install-extension cake-build.cake-vscode
 code --install-extension maptz.camelcasenavigation
