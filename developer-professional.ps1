@@ -41,13 +41,14 @@ cinst notepadplusplus.install -y --cacheLocation "$env:UserProfile\AppData\Local
 cinst notepad3.install -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
 #--- Visual Studio ---
-cinst visualstudio2015professional -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+# Visual Studio installations currently does not work well, problems with hanging during installation
+# cinst visualstudio2015professional -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
-cinst visualstudio2017professional -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+# cinst visualstudio2017professional -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+# cinst visualstudio2017-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+# cinst visualstudio2017-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+# cinst visualstudio2017-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+# cinst visualstudio2017-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
 #--- Other dev ---
 cinst git -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
