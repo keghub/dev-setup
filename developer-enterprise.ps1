@@ -18,6 +18,8 @@ cinst -y IIS-WebServerRole -source windowsfeatures
 cinst -y IIS-HttpCompressionDynamic -source windowsfeatures
 cinst -y IIS-ManagementScriptingTools -source windowsfeatures
 cinst -y IIS-WindowsAuthentication -source windowsfeatures
+cinst -y IIS-ASPNET -source windowsfeatures
+cinst -y IIS-ASPNET45 -source windowsfeatures
 
 #--- .NET ---
 cinst PowerShell -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
