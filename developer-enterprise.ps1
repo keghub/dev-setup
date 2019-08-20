@@ -43,14 +43,17 @@ cinst notepadplusplus.install -y --cacheLocation "$env:UserProfile\AppData\Local
 cinst notepad3.install -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
 #--- Visual Studio ---
-# Visual studio currently does not work when in the installation procees, it tends to hang
-# cinst visualstudio2015enterprise -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2017enterprise -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2017-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
-# cinst visualstudio2017enterprise -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-# cinst visualstudio2017-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-# cinst visualstudio2017-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-# cinst visualstudio2017-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-# cinst visualstudio2017-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2019enterprise -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2019-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2019-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2019-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2019-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
 #--- Other dev ---
 cinst git -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
