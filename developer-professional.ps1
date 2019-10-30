@@ -27,6 +27,8 @@ cinst dotnet4.5 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 cinst dotnet4.6.2 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 cinst dotnet4.7 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 cinst netfx-4.7.1-devpack -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst netfx-4.7.2-devpack -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst netfx-4.8-devpack -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 
 cinst dotnetcore-sdk -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 cinst dotnetcore -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
@@ -74,6 +76,10 @@ cinst sysinternals -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache
 cinst python -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 cinst awstools.powershell -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
 cinst pip -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst sass -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+
+#--- Fix issue with dart for Sass
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";C:\tools\dart-sdk\bin", [EnvironmentVariableTarget]::Machine)
 
 #--- Visual Studio Code ---
 cinst visualstudiocode -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
