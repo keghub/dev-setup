@@ -26,6 +26,10 @@ New-Item -Path $helloPath -Name $helloKey –Force
 New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
 
 
+#Run initial updates
+Install-WindowsUpdate -AcceptEula
+
+
 #--- Initial Windows Config ---
 Update-ExecutionPolicy Unrestricted
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess
@@ -122,6 +126,7 @@ code --install-extension eamodio.gitlens
 Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile ~/Ubuntu.appx -UseBasicParsing
 Add-AppxPackage -Path ~/Ubuntu.appx
 
+#Run remaining updates
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
