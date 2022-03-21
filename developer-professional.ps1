@@ -1,4 +1,6 @@
-New-Item -Path $env:UserProfile\AppData\Local\ChocoCache -ItemType directory -force
+$chocoCache = "$env:UserProfile\AppData\Local\ChocoCache"
+
+New-Item -Path $chocoCache -ItemType directory -force
 Disable-UAC
 
 ####################################################################################
@@ -45,67 +47,67 @@ cinst -y IIS-ASPNET -source windowsfeatures
 cinst -y IIS-ASPNET45 -source windowsfeatures
 
 #--- .NET ---
-cinst PowerShell -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnet4.5 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnet4.6.2 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnet4.7 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst netfx-4.7.1-devpack -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst netfx-4.7.2-devpack -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst netfx-4.8-devpack -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst PowerShell -y --cacheLocation $chocoCache
+cinst dotnet4.5 -y --cacheLocation $chocoCache
+cinst dotnet4.6.2 -y --cacheLocation $chocoCache
+cinst dotnet4.7 -y --cacheLocation $chocoCache
+cinst netfx-4.7.1-devpack -y --cacheLocation $chocoCache
+cinst netfx-4.7.2-devpack -y --cacheLocation $chocoCache
+cinst netfx-4.8-devpack -y --cacheLocation $chocoCache
 
-cinst dotnetcore-sdk -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnetcore -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnetcore-windowshosting -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 1.0.10 -my --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 1.1.7 -my --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 2.0.7 -my --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst dotnetcore-runtime.install --version 2.1.0 -my --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst dotnetcore-sdk -y --cacheLocation $chocoCache
+cinst dotnetcore -y --cacheLocation $chocoCache
+cinst dotnetcore-windowshosting -y --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 1.0.10 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 1.1.7 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 2.0.7 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 2.1.0 -my --cacheLocation $chocoCache
 
 #--- Applications ---
-cinst googlechrome -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst javaruntime -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst notepadplusplus.install -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst notepad3.install -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst googlechrome -y --cacheLocation $chocoCache
+cinst javaruntime -y --cacheLocation $chocoCache
+cinst notepadplusplus.install -y --cacheLocation $chocoCache
+cinst notepad3.install -y --cacheLocation $chocoCache
 
 #--- Visual Studio ---
-cinst visualstudio2017professional -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2017-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2017professional -y --cacheLocation $chocoCache
+cinst visualstudio2017-workload-manageddesktop -y --cacheLocation $chocoCache
+cinst visualstudio2017-workload-netcoretools -y --cacheLocation $chocoCache
+cinst visualstudio2017-workload-netweb -y --cacheLocation $chocoCache
+cinst visualstudio2017-workload-node -y --cacheLocation $chocoCache
 
-cinst visualstudio2019professional -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2019-workload-manageddesktop -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2019-workload-netcoretools -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2019-workload-netweb -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst visualstudio2019-workload-node -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudio2019professional -y --cacheLocation $chocoCache
+cinst visualstudio2019-workload-manageddesktop -y --cacheLocation $chocoCache
+cinst visualstudio2019-workload-netcoretools -y --cacheLocation $chocoCache
+cinst visualstudio2019-workload-netweb -y --cacheLocation $chocoCache
+cinst visualstudio2019-workload-node -y --cacheLocation $chocoCache
 
 #--- Other dev ---
-cinst git -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst resharper-ultimate-all -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst sql-server-management-studio -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst poshgit -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst sourcetree -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst linqpad -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst github -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst docker-for-windows -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst docker-kitematic -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst redis-desktop-manager -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst rdcman -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst ProcExp -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst cloudberryexplorer.s3 -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst postman -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst sysinternals -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst python -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst awstools.powershell -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst pip -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
-cinst sass -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst git -y --cacheLocation $chocoCache
+cinst resharper-ultimate-all -y --cacheLocation $chocoCache
+cinst sql-server-management-studio -y --cacheLocation $chocoCache
+cinst poshgit -y --cacheLocation $chocoCache
+cinst sourcetree -y --cacheLocation $chocoCache
+cinst linqpad -y --cacheLocation $chocoCache
+cinst github -y --cacheLocation $chocoCache
+cinst docker-for-windows -y --cacheLocation $chocoCache
+cinst docker-kitematic -y --cacheLocation $chocoCache
+cinst redis-desktop-manager -y --cacheLocation $chocoCache
+cinst rdcman -y --cacheLocation $chocoCache
+cinst ProcExp -y --cacheLocation $chocoCache
+cinst cloudberryexplorer.s3 -y --cacheLocation $chocoCache
+cinst postman -y --cacheLocation $chocoCache
+cinst sysinternals -y --cacheLocation $chocoCache
+cinst python -y --cacheLocation $chocoCache
+cinst awstools.powershell -y --cacheLocation $chocoCache
+cinst pip -y --cacheLocation $chocoCache
+cinst sass -y --cacheLocation $chocoCache
 
 #--- Fix issue with dart for Sass
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";C:\tools\dart-sdk\bin", [EnvironmentVariableTarget]::Machine)
 
 #--- Visual Studio Code ---
-cinst visualstudiocode -y --cacheLocation "$env:UserProfile\AppData\Local\ChocoCache"
+cinst visualstudiocode -y --cacheLocation $chocoCache
 
 code --install-extension ms-vscode.csharp
 code --install-extension ms-vscode.powershell
