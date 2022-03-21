@@ -1,6 +1,29 @@
 New-Item -Path $env:UserProfile\AppData\Local\ChocoCache -ItemType directory -force
 Disable-UAC
 
+####################################################################################
+#
+# Ian Waters
+#
+# www.slashadmin.co.uk
+#
+# Prevents Windows 10 prompting to setup a pin after being added to Azure AD
+#
+# Designed for use with Office 365 Business Premium subscriptions
+#
+####################################################################################
+ 
+#Disable pin requirement
+$helloPath = "HKLM:\SOFTWARE\Policies\Microsoft"
+$helloKey = "PassportForWork"
+$helloName = "Enabled"
+$helloValue = "0"
+ 
+New-Item -Path $helloPath -Name $helloKey –Force
+ 
+New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
+
+
 #--- Initial Windows Config ---
 Update-ExecutionPolicy Unrestricted
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess
@@ -100,3 +123,7 @@ Add-AppxPackage -Path ~/Ubuntu.appx
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
+
+$helloValue = "1"
+
+New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
