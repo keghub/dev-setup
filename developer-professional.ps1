@@ -1,3 +1,7 @@
+if (Test-Path 'env:EMGPrivateApiKey') {
+ throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
+}
+
 $chocoCache = "$env:UserProfile\AppData\Local\ChocoCache"
 
 New-Item -Path $chocoCache -ItemType directory -force
@@ -106,6 +110,7 @@ cinst python -y --cacheLocation $chocoCache
 cinst awstools.powershell -y --cacheLocation $chocoCache
 cinst pip -y --cacheLocation $chocoCache
 cinst sass -y --cacheLocation $chocoCache
+choco upgrade sourcetree -y --cacheLocation $chocoCache
 
 #--- Fix issue with dart for Sass
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";C:\tools\dart-sdk\bin", [EnvironmentVariableTarget]::Machine)
