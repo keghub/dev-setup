@@ -1,12 +1,3 @@
-if (Test-Path 'env:EMGPrivateApiKey') {
- throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
-}
-
-$chocoCache = "$env:UserProfile\AppData\Local\ChocoCache"
-
-New-Item -Path $chocoCache -ItemType directory -force
-Disable-UAC
-
 ####################################################################################
 #
 # Ian Waters
@@ -32,6 +23,41 @@ New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue 
 
 #Run initial updates
 Install-WindowsUpdate -AcceptEula
+
+# Test env var EMGPrivateApiKey
+
+if (Test-Path 'env:EMGPrivateApiKey') {
+ throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
+}
+
+# Setup dev directories
+
+$DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\"
+"GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ }
+
+# Create NuGet.config for user
+
+$nugetConfig = "<?xml version=""1.0"" encoding=""utf-8""?>
+<configuration>
+  <packageSources>	
+	<add key=""EMG Private"" value=""https://www.myget.org/F/emgprivate/auth/%EMGPrivateApiKey%/api/v3/index.json"" protocolVersion=""3"" />
+    <add key=""nuget.org"" value=""https://www.nuget.org/api/v2"" validated=""True"" trusted=""True"" />
+    <add key=""EMG Public"" value=""https://www.myget.org/F/emg/api/v3/index.json"" />
+	<add key=""Local"" value=""C:\Development\LocalPackages"" />
+  </packageSources>
+  <config>
+	<add key=""globalPackagesFolder"" value=""C:\Development\Packages"" />
+  </config>
+</configuration>";
+
+$nugetConfig | Out-File -FilePath $env:APPDATA\NuGet\NuGet.config
+
+#Setup choco
+
+$chocoCache = "$env:UserProfile\AppData\Local\ChocoCache"
+
+New-Item -Path $chocoCache -ItemType directory -force
+Disable-UAC
 
 
 #--- Initial Windows Config ---
@@ -66,10 +92,20 @@ cinst netfx-4.8-devpack -y --cacheLocation $chocoCache
 cinst dotnetcore-sdk -y --cacheLocation $chocoCache
 cinst dotnetcore -y --cacheLocation $chocoCache
 cinst dotnetcore-windowshosting -y --cacheLocation $chocoCache
-cinst dotnetcore-runtime.install --version 1.0.10 -my --cacheLocation $chocoCache
-cinst dotnetcore-runtime.install --version 1.1.7 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 1.0.16 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 1.1.13 -my --cacheLocation $chocoCache
 cinst dotnetcore-runtime.install --version 2.0.7 -my --cacheLocation $chocoCache
-cinst dotnetcore-runtime.install --version 2.1.0 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 2.1.30 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 2.2.8 -my --cacheLocation $chocoCache
+cinst dotnetcore-runtime.install --version 3.1.23 -my --cacheLocation $chocoCache
+
+choco install dotnet-5.0-runtime -y --cacheLocation $chocoCache
+choco install dotnet-5.0-sdk -y --cacheLocation $chocoCache
+
+choco install dotnet-6.0-runtime -y --cacheLocation $chocoCache
+choco install dotnet-6.0-sdk -y --cacheLocation $chocoCache
+
+choco install dotnetcore-sdk
 
 #--- Applications ---
 cinst googlechrome -y --cacheLocation $chocoCache
@@ -90,6 +126,11 @@ cinst visualstudio2019-workload-netcoretools -y --cacheLocation $chocoCache
 cinst visualstudio2019-workload-netweb -y --cacheLocation $chocoCache
 cinst visualstudio2019-workload-node -y --cacheLocation $chocoCache
 
+# Dotnet tools
+
+dotnet tool update --global Emg.Aws.Sso.Tool
+dotnet tool update --global Amazon.ECS.Tools
+
 #--- Other dev ---
 cinst git -y --cacheLocation $chocoCache
 cinst resharper-ultimate-all -y --cacheLocation $chocoCache
@@ -98,7 +139,7 @@ cinst poshgit -y --cacheLocation $chocoCache
 cinst sourcetree -y --cacheLocation $chocoCache
 cinst linqpad -y --cacheLocation $chocoCache
 cinst github -y --cacheLocation $chocoCache
-cinst docker-for-windows -y --cacheLocation $chocoCache
+choco upgrade docker-desktop -y --cacheLocation $chocoCache
 cinst docker-kitematic -y --cacheLocation $chocoCache
 cinst redis-desktop-manager -y --cacheLocation $chocoCache
 cinst rdcman -y --cacheLocation $chocoCache
@@ -127,9 +168,9 @@ code --install-extension maptz.camelcasenavigation
 code --install-extension PeterJausovec.vscode-docker
 code --install-extension eamodio.gitlens
 
-#--- Ubuntu ---
-Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile ~/Ubuntu.appx -UseBasicParsing
-Add-AppxPackage -Path ~/Ubuntu.appx
+#--- WSL ---
+
+wsl --install
 
 #Run remaining updates
 Enable-UAC
