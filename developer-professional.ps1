@@ -179,10 +179,23 @@ code --install-extension eamodio.gitlens
 
 wsl --install
 
+# Install AWS Client VPN
+
+$clientVpnFileName = [System.IO.Path]::GetTempFileName() + '.msi';
+
+$clientVpnUrl = 'https://d20adtppz83p9s.cloudfront.net/WPF/latest/AWS_VPN_Client.msi';
+
+Invoke-WebRequest $clientVpnUrl -OutFile $clientVpnFileName
+
+Start-Process msiexec.exe -Wait -ArgumentList "/I clientVpnFileName /quiet"
+
+
 #Run remaining updates
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
+
+# Reenable Windos Hello
 
 $helloValue = "1"
 
