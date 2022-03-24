@@ -107,6 +107,13 @@ choco install dotnet-6.0-sdk -y --cacheLocation $chocoCache
 
 choco install dotnetcore-sdk
 
+#Install dotnet CLI templates
+
+dotnet new -i "Amazon.Lambda.Templates::*"
+dotnet new -i EMG.Templates
+dotnet new -i NUnit3.DotNetNew.Template
+dotnet new -i "Kralizek.Lambda.Templates"
+
 #--- Applications ---
 cinst googlechrome -y --cacheLocation $chocoCache
 cinst javaruntime -y --cacheLocation $chocoCache
