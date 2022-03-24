@@ -25,18 +25,15 @@ New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue 
 Install-WindowsUpdate -AcceptEula
 
 # Test env var EMGPrivateApiKey
-
 if (Test-Path 'env:EMGPrivateApiKey') {
  throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
 }
 
 # Setup dev directories
-
 $DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\"
 "GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ }
 
 # Create NuGet.config for user
-
 $nugetConfig = "<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
   <packageSources>	
@@ -53,7 +50,6 @@ $nugetConfig = "<?xml version=""1.0"" encoding=""utf-8""?>
 $nugetConfig | Out-File -FilePath $env:APPDATA\NuGet\NuGet.config
 
 #Setup choco
-
 $chocoCache = "$env:UserProfile\AppData\Local\ChocoCache"
 
 New-Item -Path $chocoCache -ItemType directory -force
@@ -133,8 +129,13 @@ cinst visualstudio2019-workload-netcoretools -y --cacheLocation $chocoCache
 cinst visualstudio2019-workload-netweb -y --cacheLocation $chocoCache
 cinst visualstudio2019-workload-node -y --cacheLocation $chocoCache
 
-# Dotnet tools
+cinst visualstudio2022professional -y --cacheLocation $chocoCache
+cinst visualstudio2022-workload-manageddesktop -y --cacheLocation $chocoCache
+cinst visualstudio2022-workload-netcoretools -y --cacheLocation $chocoCache
+cinst visualstudio2022-workload-netweb -y --cacheLocation $chocoCache
+cinst visualstudio2022-workload-node -y --cacheLocation $chocoCache
 
+# Dotnet tools
 dotnet tool update --global Emg.Aws.Sso.Tool
 dotnet tool update --global Amazon.ECS.Tools
 
@@ -176,11 +177,9 @@ code --install-extension PeterJausovec.vscode-docker
 code --install-extension eamodio.gitlens
 
 #--- WSL ---
-
 wsl --install
 
 # Install AWS Client VPN
-
 $clientVpnFileName = [System.IO.Path]::GetTempFileName() + '.msi';
 
 $clientVpnUrl = 'https://d20adtppz83p9s.cloudfront.net/WPF/latest/AWS_VPN_Client.msi';
@@ -189,14 +188,12 @@ Invoke-WebRequest $clientVpnUrl -OutFile $clientVpnFileName
 
 Start-Process msiexec.exe -Wait -ArgumentList "/I clientVpnFileName /quiet"
 
-
 #Run remaining updates
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
 
 # Reenable Windos Hello
-
 $helloValue = "1"
 
 New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
