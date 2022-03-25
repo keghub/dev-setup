@@ -161,6 +161,7 @@ cinst pip -y --cacheLocation $chocoCache
 cinst sass -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
+choco upgrade sharex -y --cacheLocation $chocoCache
 
 #--- Fix issue with dart for Sass
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";C:\tools\dart-sdk\bin", [EnvironmentVariableTarget]::Machine)
