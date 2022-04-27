@@ -40,21 +40,23 @@ $DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\" -Force
 "GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ -Force }
 
 
-# Create NuGet.config for user
-$nugetConfig = "<?xml version=""1.0"" encoding=""utf-8""?>
-<configuration>
-  <packageSources>
-	<add key=""EMG Private"" value=""https://www.myget.org/F/emgprivate/auth/%EMGPrivateApiKey%/api/v3/index.json"" protocolVersion=""3"" />
-    <add key=""nuget.org"" value=""https://www.nuget.org/api/v2"" validated=""True"" trusted=""True"" />
-    <add key=""EMG Public"" value=""https://www.myget.org/F/emg/api/v3/index.json"" />
-	<add key=""Local"" value=""C:\Development\LocalPackages"" />
-  </packageSources>
-  <config>
-	<add key=""globalPackagesFolder"" value=""C:\Development\Packages"" />
-  </config>
-</configuration>";
+if (!(Test-Path $env:APPDATA\NuGet\NuGet.config)) {
+	# Create NuGet.config for user
+	$nugetConfig = "<?xml version=""1.0"" encoding=""utf-8""?>
+	<configuration>
+	  <packageSources>
+		<add key=""EMG Private"" value=""https://www.myget.org/F/emgprivate/auth/%EMGPrivateApiKey%/api/v3/index.json"" protocolVersion=""3"" />
+		<add key=""nuget.org"" value=""https://www.nuget.org/api/v2"" validated=""True"" trusted=""True"" />
+		<add key=""EMG Public"" value=""https://www.myget.org/F/emg/api/v3/index.json"" />
+		<add key=""Local"" value=""C:\Development\LocalPackages"" />
+	  </packageSources>
+	  <config>
+		<add key=""globalPackagesFolder"" value=""C:\Development\Packages"" />
+	  </config>
+	</configuration>";
 
-$nugetConfig | Out-File -FilePath $env:APPDATA\NuGet\NuGet.config -Encoding utf8
+	$nugetConfig | Out-File -FilePath $env:APPDATA\NuGet\NuGet.config -Encoding utf8
+}
 
 #Setup choco
 $chocoCache = "$env:UserProfile\AppData\Local\ChocoCache"
@@ -132,19 +134,19 @@ choco upgrade notepad3.install -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017professional -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017-workload-netcoretools -y --cacheLocation $chocoCache
-choco upgrade visualstudio2017-workload-netweb -y --cacheLocation $chocoCache
+choco upgrade visualstudio2017-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional"
 choco upgrade visualstudio2017-workload-node -y --cacheLocation $chocoCache
 
 choco upgrade visualstudio2019professional -y --cacheLocation $chocoCache
 choco upgrade visualstudio2019-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2019-workload-netcoretools -y --cacheLocation $chocoCache
-choco upgrade visualstudio2019-workload-netweb -y --cacheLocation $chocoCache
+choco upgrade visualstudio2019-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional"
 choco upgrade visualstudio2019-workload-node -y --cacheLocation $chocoCache
 
 choco upgrade visualstudio2022professional -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-netcoretools -y --cacheLocation $chocoCache
-choco upgrade visualstudio2022-workload-netweb -y --cacheLocation $chocoCache
+choco upgrade visualstudio2022-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional"
 choco upgrade visualstudio2022-workload-node -y --cacheLocation $chocoCache
 
 
@@ -176,6 +178,7 @@ choco upgrade sass -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
 choco upgrade sharex -y --cacheLocation $chocoCache
+choco upgrade ffmpeg -y --cacheLocation $chocoCache
 choco upgrade ngrok -y --cacheLocation $chocoCache
 choco upgrade nodejs.install -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
