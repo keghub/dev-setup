@@ -128,6 +128,12 @@ choco upgrade googlechrome -y --cacheLocation $chocoCache
 choco upgrade javaruntime -y --cacheLocation $chocoCache
 choco upgrade notepadplusplus.install -y --cacheLocation $chocoCache
 choco upgrade notepad3.install -y --cacheLocation $chocoCache
+choco upgrade sharex -y --cacheLocation $chocoCache
+choco upgrade ffmpeg -y --cacheLocation $chocoCache
+choco upgrade 7zip -y --cacheLocation $chocoCache
+choco upgrade slack -y --cacheLocation $chocoCache
+choco upgrade googledrive -y --cacheLocation $chocoCache
+choco upgrade google-workspace-sync -y --cacheLocation $chocoCache --ignore-checksums
 
 
 #--- Visual Studio ---
@@ -177,8 +183,6 @@ choco upgrade pip -y --cacheLocation $chocoCache
 choco upgrade sass -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
-choco upgrade sharex -y --cacheLocation $chocoCache
-choco upgrade ffmpeg -y --cacheLocation $chocoCache
 choco upgrade ngrok -y --cacheLocation $chocoCache
 choco upgrade nodejs.install -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
