@@ -92,6 +92,8 @@ choco upgrade PowerShell -y --cacheLocation $chocoCache
 choco upgrade dotnet4.5 -y --cacheLocation $chocoCache
 choco upgrade dotnet4.6.2 -y --cacheLocation $chocoCache
 choco upgrade dotnet4.7 -y --cacheLocation $chocoCache
+choco install netfx-4.7-devpack -y --cacheLocation $chocoCache
+choco install netfx-4.6.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.7.1-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.7.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.8-devpack -y --cacheLocation $chocoCache
@@ -112,8 +114,6 @@ choco upgrade dotnet-5.0-sdk -y --cacheLocation $chocoCache
 choco upgrade dotnet-6.0-runtime -y --cacheLocation $chocoCache
 choco upgrade dotnet-6.0-sdk -y --cacheLocation $chocoCache
 
-choco install dotnetcore-sdk -y --cacheLocation $chocoCache
-
 
 #Install dotnet CLI templates
 
@@ -128,25 +128,31 @@ choco upgrade googlechrome -y --cacheLocation $chocoCache
 choco upgrade javaruntime -y --cacheLocation $chocoCache
 choco upgrade notepadplusplus.install -y --cacheLocation $chocoCache
 choco upgrade notepad3.install -y --cacheLocation $chocoCache
+choco upgrade sharex -y --cacheLocation $chocoCache
+choco upgrade ffmpeg -y --cacheLocation $chocoCache
+choco upgrade 7zip -y --cacheLocation $chocoCache
+choco upgrade slack -y --cacheLocation $chocoCache
+choco upgrade googledrive -y --cacheLocation $chocoCache
+choco upgrade google-workspace-sync -y --cacheLocation $chocoCache --ignore-checksums
 
 
 #--- Visual Studio ---
 choco upgrade visualstudio2017professional -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017-workload-netcoretools -y --cacheLocation $chocoCache
-choco upgrade visualstudio2017-workload-netweb -y --cacheLocation $chocoCache
+choco upgrade visualstudio2017-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
 choco upgrade visualstudio2017-workload-node -y --cacheLocation $chocoCache
 
 choco upgrade visualstudio2019professional -y --cacheLocation $chocoCache
 choco upgrade visualstudio2019-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2019-workload-netcoretools -y --cacheLocation $chocoCache
-choco upgrade visualstudio2019-workload-netweb -y --cacheLocation $chocoCache
+choco upgrade visualstudio2019-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
 choco upgrade visualstudio2019-workload-node -y --cacheLocation $chocoCache
 
 choco upgrade visualstudio2022professional -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-netcoretools -y --cacheLocation $chocoCache
-choco upgrade visualstudio2022-workload-netweb -y --cacheLocation $chocoCache
+choco upgrade visualstudio2022-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
 choco upgrade visualstudio2022-workload-node -y --cacheLocation $chocoCache
 
 
@@ -177,11 +183,10 @@ choco upgrade pip -y --cacheLocation $chocoCache
 choco upgrade sass -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
-choco upgrade sharex -y --cacheLocation $chocoCache
-choco upgrade ffmpeg -y --cacheLocation $chocoCache
 choco upgrade ngrok -y --cacheLocation $chocoCache
 choco upgrade nodejs.install -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
+choco upgrade tortoisegit -y --cacheLocation $chocoCache
 
 
 #--- Fix issue with dart for Sass
