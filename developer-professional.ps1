@@ -76,15 +76,15 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\
 
 
 #--- Windows features ---
-choco upgrade -y Containers -source windowsFeatures
-choco upgrade -y Microsoft-Hyper-V-All -source windowsFeatures
-choco upgrade -y Microsoft-Windows-Subsystem-Linux -source windowsfeatures
-choco upgrade -y IIS-WebServerRole -source windowsfeatures
-choco upgrade -y IIS-HttpCompressionDynamic -source windowsfeatures
-choco upgrade -y IIS-ManagementScriptingTools -source windowsfeatures
-choco upgrade -y IIS-WindowsAuthentication -source windowsfeatures
-choco upgrade -y IIS-ASPNET -source windowsfeatures
-choco upgrade -y IIS-ASPNET45 -source windowsfeatures
+choco install -y Containers -source windowsFeatures
+choco install -y Microsoft-Hyper-V-All -source windowsFeatures
+choco install -y Microsoft-Windows-Subsystem-Linux -source windowsfeatures
+choco install -y IIS-WebServerRole -source windowsfeatures
+choco install -y IIS-HttpCompressionDynamic -source windowsfeatures
+choco install -y IIS-ManagementScriptingTools -source windowsfeatures
+choco install -y IIS-WindowsAuthentication -source windowsfeatures
+choco install -y IIS-ASPNET -source windowsfeatures
+choco install -y IIS-ASPNET45 -source windowsfeatures
 
 
 #--- .NET ---
