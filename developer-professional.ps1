@@ -184,7 +184,7 @@ choco upgrade sass -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
 choco upgrade ngrok -y --cacheLocation $chocoCache
-choco upgrade nodejs.install -y --cacheLocation $chocoCache
+choco upgrade nodejs-lts -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
 choco upgrade tortoisegit -y --cacheLocation $chocoCache
 
