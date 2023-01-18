@@ -114,6 +114,9 @@ choco upgrade dotnet-5.0-sdk -y --cacheLocation $chocoCache
 choco upgrade dotnet-6.0-runtime -y --cacheLocation $chocoCache
 choco upgrade dotnet-6.0-sdk -y --cacheLocation $chocoCache
 
+choco upgrade dotnet-7.0-runtime -y --cacheLocation $chocoCache
+choco upgrade dotnet-7.0-sdk -y --cacheLocation $chocoCache
+
 
 #Install dotnet CLI templates
 
