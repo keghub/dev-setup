@@ -19,6 +19,9 @@ $helloValue = "0"
 New-Item -Path $helloPath -Name $helloKey -Force
  
 New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
+New-ItemProperty -Path $helloPath\$helloKey -Name DisablePostLogonProvisioning -Value "1" -PropertyType DWORD -Force
+
+New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings -Name AllowSignInOptions -Value "0" -PropertyType DWORD -Force
 
 
 #Set primary DNS suffix
@@ -55,7 +58,7 @@ if (!(Test-Path $env:APPDATA\NuGet\NuGet.config)) {
 	  </config>
 	</configuration>";
 
-	$nugetConfig | Out-File -FilePath $env:APPDATA\NuGet\NuGet.config -Encoding utf8
+	$nugetConfig | Out-File -FilePath (New-Item -Path $env:APPDATA\NuGet\NuGet.config -Force) -Encoding utf8
 }
 
 #Setup choco
@@ -248,4 +251,8 @@ Install-WindowsUpdate -AcceptEula
 
 # Reenable Windos Hello
 
-New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value 1 -PropertyType DWORD -Force
+New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value "1" -PropertyType DWORD -Force
+
+New-ItemProperty -Path $helloPath\$helloKey -Name DisablePostLogonProvisioning -Value "0" -PropertyType DWORD -Force
+
+New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings -Name AllowSignInOptions -Value "1" -PropertyType DWORD -Force
