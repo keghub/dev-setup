@@ -92,31 +92,44 @@ choco upgrade PowerShell -y --cacheLocation $chocoCache
 choco upgrade dotnet4.5 -y --cacheLocation $chocoCache
 choco upgrade dotnet4.6.2 -y --cacheLocation $chocoCache
 choco upgrade dotnet4.7 -y --cacheLocation $chocoCache
-choco install netfx-4.7-devpack -y --cacheLocation $chocoCache
-choco install netfx-4.6.2-devpack -y --cacheLocation $chocoCache
+choco upgrade netfx-4.7-devpack -y --cacheLocation $chocoCache
+choco upgrade netfx-4.6.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.7.1-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.7.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.8-devpack -y --cacheLocation $chocoCache
 
-choco upgrade dotnetcore-sdk -y --cacheLocation $chocoCache
-choco upgrade dotnetcore -y --cacheLocation $chocoCache
-choco upgrade dotnetcore-windowshosting -y --cacheLocation $chocoCache
-choco upgrade dotnetcore-runtime.install --version 1.0.16 -my --cacheLocation $chocoCache
-choco upgrade dotnetcore-runtime.install --version 1.1.13 -my --cacheLocation $chocoCache
-choco upgrade dotnetcore-runtime.install --version 2.0.7 -my --cacheLocation $chocoCache
-choco upgrade dotnetcore-runtime.install --version 2.1.30 -my --cacheLocation $chocoCache
-choco upgrade dotnetcore-runtime.install --version 2.2.8 -my --cacheLocation $chocoCache
-choco upgrade dotnetcore-runtime.install --version 3.1.23 -my --cacheLocation $chocoCache
+choco install dotnetcore-runtime --version 1.1.10 --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-aspnetruntime --version 1.1.10 --force -m -y --cacheLocation $chocoCache
+
+choco install dotnetcore-runtime --version 2.0.9 --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-aspnetruntime --version 2.0.9 --force -m -y --cacheLocation $chocoCache
+
+choco install dotnetcore-2.1-runtime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-2.1-aspnetruntime --force -m -y --cacheLocation $chocoCache
+
+choco install dotnetcore-2.2-runtime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-2.2-aspnetruntime --force -m -y --cacheLocation $chocoCache
+
+choco install dotnetcore-3.0-runtime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-3.0-aspnetruntime --force -m -y --cacheLocation $chocoCache
+
+choco install dotnetcore-3.1-runtime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-3.1-aspnetruntime --force -m -y --cacheLocation $chocoCache
 
 choco upgrade dotnet-5.0-runtime -y --cacheLocation $chocoCache
+choco upgrade dotnet-5.0-aspnetruntime -y --force
 choco upgrade dotnet-5.0-sdk -y --cacheLocation $chocoCache
 
 choco upgrade dotnet-6.0-runtime -y --cacheLocation $chocoCache
+choco upgrade dotnet-6.0-aspnetruntime -y --force
 choco upgrade dotnet-6.0-sdk -y --cacheLocation $chocoCache
 
 choco upgrade dotnet-7.0-runtime -y --cacheLocation $chocoCache
+choco upgrade dotnet-7.0-aspnetruntime -y --force
 choco upgrade dotnet-7.0-sdk -y --cacheLocation $chocoCache
 
+choco upgrade dotnet-aspnetcoremodule-v1 -y --cacheLocation $chocoCache
+choco upgrade dotnet-aspnetcoremodule-v2 -y --cacheLocation $chocoCache
 
 #Install dotnet CLI templates
 
@@ -190,7 +203,8 @@ choco upgrade ngrok -y --cacheLocation $chocoCache
 choco upgrade nodejs-lts -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
 choco upgrade tortoisegit -y --cacheLocation $chocoCache
-
+choco upgrade windirstat -y --cacheLocation $chocoCache
+choco install whysoslow -y --cacheLocation $chocoCache
 
 #--- Fix issue with dart for Sass
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";C:\tools\dart-sdk\bin", [EnvironmentVariableTarget]::Machine)
