@@ -51,10 +51,10 @@ if (!(Test-Path $env:APPDATA\NuGet\NuGet.config)) {
 		<add key=""EMG Private"" value=""https://www.myget.org/F/emgprivate/auth/%EMGPrivateApiKey%/api/v3/index.json"" protocolVersion=""3"" />
 		<add key=""nuget.org"" value=""https://www.nuget.org/api/v2"" validated=""True"" trusted=""True"" />
 		<add key=""EMG Public"" value=""https://www.myget.org/F/emg/api/v3/index.json"" />
-		<add key=""Local"" value=""C:\Development\LocalPackages"" />
+		<add key=""Local"" value=""D:\Development\LocalPackages"" />
 	  </packageSources>
 	  <config>
-		<add key=""globalPackagesFolder"" value=""C:\Development\Packages"" />
+		<add key=""globalPackagesFolder"" value=""D:\Development\Packages"" />
 	  </config>
 	</configuration>";
 
