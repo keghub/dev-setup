@@ -21,7 +21,7 @@ New-Item -Path $helloPath -Name $helloKey -Force
 New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
 New-ItemProperty -Path $helloPath\$helloKey -Name DisablePostLogonProvisioning -Value "1" -PropertyType DWORD -Force
 
-New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings -Name AllowSignInOptions -Value "0" -PropertyType DWORD -Force
+New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowSignInOptions -Name value -Value "0" -PropertyType DWORD -Force
 
 
 #Set primary DNS suffix
@@ -255,4 +255,4 @@ New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value "1" -Propert
 
 New-ItemProperty -Path $helloPath\$helloKey -Name DisablePostLogonProvisioning -Value "0" -PropertyType DWORD -Force
 
-New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings -Name AllowSignInOptions -Value "1" -PropertyType DWORD -Force
+New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowSignInOptions -Name value -Value "1" -PropertyType DWORD -Force
