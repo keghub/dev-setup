@@ -218,7 +218,6 @@ choco upgrade sysinternals -y --cacheLocation $chocoCache
 choco upgrade python -y --cacheLocation $chocoCache
 choco upgrade awstools.powershell -y --cacheLocation $chocoCache
 choco upgrade pip -y --cacheLocation $chocoCache
-choco upgrade sass -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
 choco upgrade ngrok -y --cacheLocation $chocoCache
@@ -227,9 +226,6 @@ choco upgrade putty -y --cacheLocation $chocoCache
 choco upgrade tortoisegit -y --cacheLocation $chocoCache
 choco upgrade windirstat -y --cacheLocation $chocoCache
 choco install whysoslow -y --cacheLocation $chocoCache
-
-#--- Fix issue with dart for Sass
-[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + ";C:\tools\dart-sdk\bin", [EnvironmentVariableTarget]::Machine)
 
 
 #--- Visual Studio Code ---
