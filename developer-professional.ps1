@@ -5,6 +5,12 @@ if (!(Test-Path 'env:EMGPrivateApiKey')) {
  throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
 }
 
+function RebootIfNeeded
+{
+    if((PendingReboot\Test-PendingReboot).IsRebootPending){
+        Invoke-Reboot
+    }
+}
 
 ####################################################################################
 #
