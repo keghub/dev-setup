@@ -152,6 +152,8 @@ choco upgrade dotnet-7.0-sdk -y --cacheLocation $chocoCache
 choco upgrade dotnet-aspnetcoremodule-v1 -y --cacheLocation $chocoCache
 choco upgrade dotnet-aspnetcoremodule-v2 -y --cacheLocation $chocoCache
 
+refreshenv
+
 #Install dotnet CLI templates
 
 dotnet new install "Amazon.Lambda.Templates::*"
