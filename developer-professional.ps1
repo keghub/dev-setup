@@ -228,17 +228,26 @@ choco install whysoslow -y --cacheLocation $chocoCache
 #--- Visual Studio Code ---
 choco upgrade visualstudiocode -y --cacheLocation $chocoCache
 
-code --install-extension ms-dotnettools.csharp
-code --install-extension ms-vscode.powershell
-code --install-extension jchannon.csharpextensions
-code --install-extension cake-build.cake-vscode
-code --install-extension maptz.camelcasenavigation
-code --install-extension eamodio.gitlens
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-vscode-remote.remote-containers
-code --install-extension glenn2223.live-sass
-code --install-extension ms-vscode.vscode-typescript-tslint-plugin
-code --install-extension stylelint.vscode-stylelint
+Try
+{
+    refreshenv
+    
+    code --install-extension ms-dotnettools.csharp
+    code --install-extension ms-vscode.powershell
+    code --install-extension jchannon.csharpextensions
+    code --install-extension cake-build.cake-vscode
+    code --install-extension maptz.camelcasenavigation
+    code --install-extension eamodio.gitlens
+    code --install-extension ms-azuretools.vscode-docker
+    code --install-extension ms-vscode-remote.remote-containers
+    code --install-extension glenn2223.live-sass
+    code --install-extension ms-vscode.vscode-typescript-tslint-plugin
+    code --install-extension stylelint.vscode-stylelint
+}
+Catch 
+{
+    Write-Host 'Error installing code extensions'
+}
 
 
 #--- WSL ---
