@@ -122,22 +122,20 @@ choco upgrade netfx-4.7.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.8-devpack -y --cacheLocation $chocoCache
 
 choco install dotnetcore-runtime --version 1.1.10 --force -m -y --cacheLocation $chocoCache
-choco install dotnetcore-aspnetruntime --version 1.1.10 --force -m -y --cacheLocation $chocoCache
 
 choco install dotnetcore-runtime --version 2.0.9 --force -m -y --cacheLocation $chocoCache
-choco install dotnetcore-aspnetruntime --version 2.0.9 --force -m -y --cacheLocation $chocoCache
 
-choco install dotnetcore-2.1-runtime --force -m -y --cacheLocation $chocoCache
-choco install dotnetcore-2.1-aspnetruntime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-2.1-runtime -y --cacheLocation $chocoCache
+choco install dotnetcore-2.1-aspnetruntime -y --cacheLocation $chocoCache
 
-choco install dotnetcore-2.2-runtime --force -m -y --cacheLocation $chocoCache
-choco install dotnetcore-2.2-aspnetruntime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-2.2-runtime -y --cacheLocation $chocoCache
+choco install dotnetcore-2.2-aspnetruntime -y --cacheLocation $chocoCache
 
-choco install dotnetcore-3.0-runtime --force -m -y --cacheLocation $chocoCache
-choco install dotnetcore-3.0-aspnetruntime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-3.0-runtime -y --cacheLocation $chocoCache
+choco install dotnetcore-3.0-aspnetruntime -y --cacheLocation $chocoCache
 
-choco install dotnetcore-3.1-runtime --force -m -y --cacheLocation $chocoCache
-choco install dotnetcore-3.1-aspnetruntime --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-3.1-runtime -y --cacheLocation $chocoCache
+choco install dotnetcore-3.1-aspnetruntimee -y --cacheLocation $chocoCache
 
 choco upgrade dotnet-5.0-runtime -y --cacheLocation $chocoCache
 choco upgrade dotnet-5.0-aspnetruntime -y --force
@@ -156,10 +154,10 @@ choco upgrade dotnet-aspnetcoremodule-v2 -y --cacheLocation $chocoCache
 
 #Install dotnet CLI templates
 
-dotnet new -i "Amazon.Lambda.Templates::*"
-dotnet new -i EMG.Templates
-dotnet new -i NUnit3.DotNetNew.Template
-dotnet new -i "Kralizek.Lambda.Templates"
+dotnet new install "Amazon.Lambda.Templates::*"
+dotnet new install EMG.Templates
+dotnet new install NUnit3.DotNetNew.Template
+dotnet new install "Kralizek.Lambda.Templates"
 
 
 #--- Applications ---
