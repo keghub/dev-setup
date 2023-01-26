@@ -58,11 +58,6 @@ Get-Command Install-WindowsUpdate
 
 Install-WindowsUpdate -AcceptEula -SuppressReboots
 
-Install-Module -Name PendingReboot -Force -AllowClobber
-
-RebootIfNeeded
-
-
 # Setup dev directories - Disable for now
 # $DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\" -Force
 # "GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ -Force }
