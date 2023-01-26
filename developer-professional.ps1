@@ -1,3 +1,11 @@
+# Pre flight check
+
+# Test env var EMGPrivateApiKey
+if (!(Test-Path 'env:EMGPrivateApiKey')) {
+ throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
+}
+
+
 ####################################################################################
 #
 # Ian Waters
@@ -29,18 +37,29 @@ Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters 
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name 'NV Domain' -Value 'stockholm.educations.com'
 
 
+# Set explorer options
+
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
+
+
 #Run initial updates
-Install-WindowsUpdate -AcceptEula
+
+Enable-MicrosoftUpdate
+
+Import-Module C:\ProgramData\Boxstarter\boxstarter.WinConfig\Boxstarter.Winconfig.psd1
+
+Get-Command Install-WindowsUpdate
+
+Install-WindowsUpdate -AcceptEula -SuppressReboots
+
+Install-Module -Name PendingReboot -Force -AllowClobber
+
+RebootIfNeeded
 
 
-# Test env var EMGPrivateApiKey
-if (!(Test-Path 'env:EMGPrivateApiKey')) {
- throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
-}
-
-# Setup dev directories
-$DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\" -Force
-"GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ -Force }
+# Setup dev directories - Disable for now
+# $DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\" -Force
+# "GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ -Force }
 
 
 if (!(Test-Path $env:APPDATA\NuGet\NuGet.config)) {
