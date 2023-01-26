@@ -135,7 +135,7 @@ choco install dotnetcore-3.0-runtime -y --cacheLocation $chocoCache
 choco install dotnetcore-3.0-aspnetruntime -y --cacheLocation $chocoCache
 
 choco install dotnetcore-3.1-runtime -y --cacheLocation $chocoCache
-choco install dotnetcore-3.1-aspnetruntimee -y --cacheLocation $chocoCache
+choco install dotnetcore-3.1-aspnetruntime -y --cacheLocation $chocoCache
 
 choco upgrade dotnet-5.0-runtime -y --cacheLocation $chocoCache
 choco upgrade dotnet-5.0-aspnetruntime -y --force
@@ -169,8 +169,6 @@ choco upgrade sharex -y --cacheLocation $chocoCache
 choco upgrade ffmpeg -y --cacheLocation $chocoCache
 choco upgrade 7zip -y --cacheLocation $chocoCache
 choco upgrade slack -y --cacheLocation $chocoCache
-choco upgrade googledrive -y --cacheLocation $chocoCache
-choco upgrade google-workspace-sync -y --cacheLocation $chocoCache --ignore-checksums
 
 
 #--- Visual Studio ---
