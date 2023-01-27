@@ -59,8 +59,15 @@ Get-Command Install-WindowsUpdate
 Install-WindowsUpdate -AcceptEula -SuppressReboots
 
 # Setup dev directories - Disable for now
-# $DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "C:\" -Force
-# "GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ -Force }
+Try
+{
+$DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "D:\" -Force
+"GitHub", "EMG", "Tests", "LocalPackages", "Packages" | % { New-Item -ItemType Directory -Path $DEVDIR -Name $_ -Force }
+}
+Catch
+{
+Write-Host 'Couldn't create dev directories'
+}
 
 
 if (!(Test-Path $env:APPDATA\NuGet\NuGet.config)) {
@@ -122,20 +129,26 @@ choco upgrade netfx-4.7.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.8-devpack -y --cacheLocation $chocoCache
 
 choco install dotnetcore-runtime --version 1.1.10 --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-sdk --version=1.1.14 --force -m -y --cacheLocation $chocoCache
 
-choco install dotnetcore-runtime --version 2.0.9 --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-2.0-runtime -y --cacheLocation $chocoCache
+choco install dotnetcore-2.0-sdk -y --cacheLocation $chocoCache
 
 choco install dotnetcore-2.1-runtime -y --cacheLocation $chocoCache
 choco install dotnetcore-2.1-aspnetruntime -y --cacheLocation $chocoCache
+choco install dotnetcore-2.1-sdk -y --cacheLocation $chocoCache
 
 choco install dotnetcore-2.2-runtime -y --cacheLocation $chocoCache
 choco install dotnetcore-2.2-aspnetruntime -y --cacheLocation $chocoCache
+choco install dotnetcore-2.2-sdk -y --cacheLocation $chocoCache
 
 choco install dotnetcore-3.0-runtime -y --cacheLocation $chocoCache
 choco install dotnetcore-3.0-aspnetruntime -y --cacheLocation $chocoCache
+choco install dotnetcore-3.0-sdk -y --cacheLocation $chocoCache
 
 choco install dotnetcore-3.1-runtime -y --cacheLocation $chocoCache
 choco install dotnetcore-3.1-aspnetruntime -y --cacheLocation $chocoCache
+choco install dotnetcore-3.1-sdk -y --cacheLocation $chocoCache
 
 choco upgrade dotnet-5.0-runtime -y --cacheLocation $chocoCache
 choco upgrade dotnet-5.0-aspnetruntime -y --force
@@ -163,7 +176,7 @@ dotnet new install "Kralizek.Lambda.Templates"
 
 
 #--- Applications ---
-choco upgrade googlechrome -y --cacheLocation $chocoCache
+choco install microsoft-teams -y --cacheLocation $chocoCache
 choco upgrade javaruntime -y --cacheLocation $chocoCache
 choco upgrade notepadplusplus.install -y --cacheLocation $chocoCache
 choco upgrade notepad3.install -y --cacheLocation $chocoCache
@@ -175,18 +188,21 @@ choco upgrade slack -y --cacheLocation $chocoCache
 
 #--- Visual Studio ---
 choco upgrade visualstudio2017professional -y --cacheLocation $chocoCache
+refreshenv
 choco upgrade visualstudio2017-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017-workload-netcoretools -y --cacheLocation $chocoCache
 choco upgrade visualstudio2017-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
 choco upgrade visualstudio2017-workload-node -y --cacheLocation $chocoCache
 
 choco upgrade visualstudio2019professional -y --cacheLocation $chocoCache
+refreshenv
 choco upgrade visualstudio2019-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2019-workload-netcoretools -y --cacheLocation $chocoCache
 choco upgrade visualstudio2019-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
 choco upgrade visualstudio2019-workload-node -y --cacheLocation $chocoCache
 
 choco upgrade visualstudio2022professional -y --cacheLocation $chocoCache
+refreshenv
 choco upgrade visualstudio2022-workload-manageddesktop -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-netcoretools -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
