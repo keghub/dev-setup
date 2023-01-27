@@ -66,7 +66,7 @@ $DEVDIR = New-Item -ItemType Directory -Name "Development" -Path "D:\" -Force
 }
 Catch
 {
-Write-Host 'Couldn't create dev directories'
+Write-Host 'Couldnt create dev directories'
 }
 
 
