@@ -128,7 +128,7 @@ choco upgrade netfx-4.7.1-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.7.2-devpack -y --cacheLocation $chocoCache
 choco upgrade netfx-4.8-devpack -y --cacheLocation $chocoCache
 
-choco install dotnetcore-runtime --version 1.1.10 --force -m -y --cacheLocation $chocoCache
+choco install dotnetcore-runtime --version 1.1.13 --force -m -y --cacheLocation $chocoCache
 choco install dotnetcore-sdk --version=1.1.14 --force -m -y --cacheLocation $chocoCache
 
 choco install dotnetcore-2.0-runtime -y --cacheLocation $chocoCache
@@ -184,6 +184,9 @@ choco upgrade sharex -y --cacheLocation $chocoCache
 choco upgrade ffmpeg -y --cacheLocation $chocoCache
 choco upgrade 7zip -y --cacheLocation $chocoCache
 choco upgrade slack -y --cacheLocation $chocoCache
+choco upgrade spotify -y --cacheLocation $chocoCache
+choco upgrade 1password -y --cacheLocation $chocoCache
+choco upgrade teamviewer -y --cacheLocation $chocoCache
 
 
 #--- Visual Studio ---
@@ -240,7 +243,8 @@ choco upgrade nodejs-lts -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
 choco upgrade tortoisegit -y --cacheLocation $chocoCache
 choco upgrade windirstat -y --cacheLocation $chocoCache
-choco install whysoslow -y --cacheLocation $chocoCache
+choco upgrade whysoslow -y --cacheLocation $chocoCache
+choco upgrade sql-server-2022 -y --cacheLocation $chocoCache
 
 
 #--- Visual Studio Code ---
@@ -280,6 +284,10 @@ $clientVpnUrl = 'https://d20adtppz83p9s.cloudfront.net/WPF/latest/AWS_VPN_Client
 Invoke-WebRequest $clientVpnUrl -OutFile $clientVpnFileName
 
 Start-Process msiexec.exe -Wait -ArgumentList "/I $clientVpnFileName /quiet"
+
+# Install containers
+refreshenv
+docker create --name rabbitmq -p 4369:4369 -p 15672:15672 -p 5672:5672 rabbitmq:management
 
 
 #Run remaining updates
