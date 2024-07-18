@@ -1,4 +1,4 @@
-# Pre flight check
+﻿# Pre flight check
 
 # Test env var EMGPrivateApiKey
 if (!(Test-Path 'env:EMGPrivateApiKey')) {
@@ -24,18 +24,6 @@ function RebootIfNeeded
 #
 ####################################################################################
  
-#Disable pin requirement
-$helloPath = "HKLM:\SOFTWARE\Policies\Microsoft"
-$helloKey = "PassportForWork"
-$helloName = "Enabled"
-$helloValue = "0"
- 
-New-Item -Path $helloPath -Name $helloKey -Force
- 
-New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value $helloValue -PropertyType DWORD -Force
-New-ItemProperty -Path $helloPath\$helloKey -Name DisablePostLogonProvisioning -Value "1" -PropertyType DWORD -Force
-
-New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowSignInOptions -Name value -Value "0" -PropertyType DWORD -Force
 
 
 #Set primary DNS suffix
@@ -149,17 +137,14 @@ dotnet new install "Kralizek.Lambda.Templates"
 
 
 #--- Applications ---
-choco install microsoft-teams -y --cacheLocation $chocoCache
-choco upgrade javaruntime -y --cacheLocation $chocoCache
+choco upgrade temurinjre -y --cacheLocation $chocoCache
 choco upgrade notepadplusplus.install -y --cacheLocation $chocoCache
 choco upgrade notepad3.install -y --cacheLocation $chocoCache
 choco upgrade sharex -y --cacheLocation $chocoCache
 choco upgrade ffmpeg -y --cacheLocation $chocoCache
 choco upgrade 7zip -y --cacheLocation $chocoCache
-choco upgrade slack -y --cacheLocation $chocoCache
 choco upgrade spotify -y --cacheLocation $chocoCache
-choco upgrade 1password -y --cacheLocation $chocoCache
-choco upgrade teamviewer -y --cacheLocation $chocoCache
+
 
 
 #--- Visual Studio ---
@@ -252,12 +237,3 @@ docker create --name rabbitmq -p 4369:4369 -p 15672:15672 -p 5672:5672 rabbitmq:
 Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -AcceptEula
-
-
-# Reenable Windos Hello
-
-New-ItemProperty -Path $helloPath\$helloKey -Name $helloName -Value "1" -PropertyType DWORD -Force
-
-New-ItemProperty -Path $helloPath\$helloKey -Name DisablePostLogonProvisioning -Value "0" -PropertyType DWORD -Force
-
-New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowSignInOptions -Name value -Value "1" -PropertyType DWORD -Force
