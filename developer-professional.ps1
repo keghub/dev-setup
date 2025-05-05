@@ -229,8 +229,8 @@ Catch
     Write-Host 'Error installing code extensions'
 }
 
-
 #--- WSL ---
+wsl --set-default-version 2
 wsl --install -d Ubuntu
 
 
