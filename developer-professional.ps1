@@ -96,7 +96,7 @@ choco upgrade linqpad6 -y --cacheLocation $chocoCache
 choco upgrade linqpad7 -y --cacheLocation $chocoCache
 choco upgrade github -y --cacheLocation $chocoCache
 choco upgrade docker-desktop -y --cacheLocation $chocoCache
-choco upgrade redis-desktop-manager -y --cacheLocation $chocoCache
+choco upgrade redis-desktop-manager -y --version=0.9.3 --cacheLocation $chocoCache
 choco upgrade rdcman -y --cacheLocation $chocoCache
 choco upgrade ProcExp -y --cacheLocation $chocoCache
 choco upgrade postman -y --cacheLocation $chocoCache
@@ -111,7 +111,7 @@ choco upgrade putty -y --cacheLocation $chocoCache
 choco upgrade tortoisegit -y --cacheLocation $chocoCache
 choco upgrade windirstat -y --cacheLocation $chocoCache
 choco upgrade whysoslow -y --ignore-checksum --cacheLocation $chocoCache
-choco upgrade sql-server-2022 -y --params="'/IgnorePendingReboot'"
+choco upgrade sql-server-2022 -y --params="'/IgnorePendingReboot'" --cacheLocation $chocoCache
 
 #--- Visual Studio Code ---
 choco upgrade visualstudiocode -y --cacheLocation $chocoCache
