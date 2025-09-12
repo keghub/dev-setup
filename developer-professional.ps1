@@ -3,8 +3,19 @@ if (!(Test-Path 'env:EMGPrivateApiKey')) {
  throw "Enviorntment Variable 'EMGPrivateApiKey' needed";
 }
 
+#Set primary DNS suffix
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name 'Domain' -Value 'stockholm.educations.com'
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name 'NV Domain' -Value 'stockholm.educations.com'
+
 # Set explorer options
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
+
+#Run initial updates
+Enable-MicrosoftUpdate
+Import-Module C:\ProgramData\Boxstarter\boxstarter.WinConfig\Boxstarter.Winconfig.psd1
+
+Get-Command Install-WindowsUpdate
+Install-WindowsUpdate -AcceptEula -SuppressReboots
 
 # Setup dev directories
 if (!(Test-Path D:\Development)) {
@@ -155,3 +166,7 @@ wsl --install -d Ubuntu
 # Install containers
 refreshenv
 docker create --name rabbitmq -p 4369:4369 -p 15672:15672 -p 5672:5672 rabbitmq:management
+
+#Run remaining updates
+Enable-MicrosoftUpdate
+Install-WindowsUpdate -AcceptEula
