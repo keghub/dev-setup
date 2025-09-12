@@ -7,16 +7,6 @@ if (!(Test-Path 'env:EMGPrivateApiKey')) {
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name 'Domain' -Value 'stockholm.educations.com'
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name 'NV Domain' -Value 'stockholm.educations.com'
 
-# Set explorer options
-Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
-
-#Run initial updates
-Enable-MicrosoftUpdate
-Import-Module C:\ProgramData\Boxstarter\boxstarter.WinConfig\Boxstarter.Winconfig.psd1
-
-Get-Command Install-WindowsUpdate
-Install-WindowsUpdate -AcceptEula -SuppressReboots
-
 # Setup dev directories
 if (!(Test-Path D:\Development)) {
 	Try
@@ -84,12 +74,6 @@ choco upgrade dotnet-aspnetcoremodule-v2 -y --cacheLocation $chocoCache
 
 refreshenv
 
-#Install dotnet CLI templates
-
-dotnet new install "Amazon.Lambda.Templates::*"
-dotnet new install EMG.Templates
-dotnet new install NUnit3.DotNetNew.Template
-
 #--- Applications ---
 choco upgrade javaruntime -y --cacheLocation $chocoCache
 choco upgrade notepadplusplus.install -y --cacheLocation $chocoCache
@@ -99,13 +83,8 @@ choco upgrade notepad3.install -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022professional -y --cacheLocation $chocoCache
 refreshenv
 choco upgrade visualstudio2022-workload-manageddesktop -y --cacheLocation $chocoCache
-choco upgrade visualstudio2022-workload-netcoretools -y --cacheLocation $chocoCache
 choco upgrade visualstudio2022-workload-netweb -y --cacheLocation $chocoCache --package-parameters "--includeOptional --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup"
 choco upgrade visualstudio2022-workload-node -y --cacheLocation $chocoCache
-
-# Dotnet tools
-dotnet tool update --global Emg.Aws.Sso.Tool
-dotnet tool update --global Amazon.ECS.Tools
 
 #--- Other dev ---
 choco upgrade git -y --cacheLocation $chocoCache
@@ -124,7 +103,6 @@ choco upgrade postman -y --cacheLocation $chocoCache
 choco upgrade sysinternals -y --cacheLocation $chocoCache
 choco upgrade python -y --cacheLocation $chocoCache
 choco upgrade awstools.powershell -y --cacheLocation $chocoCache
-choco upgrade pip -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
 choco upgrade awscli -y --cacheLocation $chocoCache
 choco upgrade ngrok -y --cacheLocation $chocoCache
@@ -132,8 +110,8 @@ choco upgrade nodejs-lts -y --cacheLocation $chocoCache
 choco upgrade putty -y --cacheLocation $chocoCache
 choco upgrade tortoisegit -y --cacheLocation $chocoCache
 choco upgrade windirstat -y --cacheLocation $chocoCache
-choco upgrade whysoslow -y --cacheLocation $chocoCache
-choco upgrade sql-server-2022 -y --cacheLocation $chocoCache
+choco upgrade whysoslow -y --ignore-checksum --cacheLocation $chocoCache
+choco upgrade sql-server-2022 -y --params="'/IgnorePendingReboot'"
 
 #--- Visual Studio Code ---
 choco upgrade visualstudiocode -y --cacheLocation $chocoCache
@@ -163,10 +141,16 @@ Catch
 wsl --set-default-version 2
 wsl --install -d Ubuntu
 
+# ---------------- Below Requires restart!
+
 # Install containers
-refreshenv
 docker create --name rabbitmq -p 4369:4369 -p 15672:15672 -p 5672:5672 rabbitmq:management
 
-#Run remaining updates
-Enable-MicrosoftUpdate
-Install-WindowsUpdate -AcceptEula
+#Install dotnet CLI templates
+dotnet new install "Amazon.Lambda.Templates::*"
+dotnet new install EMG.Templates
+dotnet new install NUnit3.DotNetNew.Template
+
+# Dotnet tools
+dotnet tool update --global Emg.Aws.Sso.Tool
+dotnet tool update --global Amazon.ECS.Tools
