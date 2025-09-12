@@ -149,6 +149,7 @@ Catch
 }
 
 #--- WSL ---
+wsl --set-default-version 2
 wsl --install -d Ubuntu
 
 # Install containers
