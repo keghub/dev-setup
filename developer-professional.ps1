@@ -100,7 +100,7 @@ choco upgrade redis-desktop-manager -y --version=0.9.3 --cacheLocation $chocoCac
 choco upgrade rdcman -y --cacheLocation $chocoCache
 choco upgrade ProcExp -y --cacheLocation $chocoCache
 choco upgrade postman -y --cacheLocation $chocoCache
-choco upgrade sysinternals -y --ignore-checksum --cacheLocation $chocoCache # - chekck error!!!
+choco upgrade sysinternals -y --ignore-checksum --cacheLocation $chocoCache
 choco upgrade python -y --cacheLocation $chocoCache
 choco upgrade awstools.powershell -y --cacheLocation $chocoCache
 choco upgrade sourcetree -y --cacheLocation $chocoCache
